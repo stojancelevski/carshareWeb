@@ -1,0 +1,162 @@
+<div class="container">
+  <form novalidate (ngSubmit)="save()"
+        [formGroup]="userForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter your name"
+               [ngClass]="{'is-invalid': (userForm.get('name').touched ||
+                                           userForm.get('name').dirty) &&
+                                           !userForm.get('name').valid }">
+        <span class="invalid-feedback">
+        <span *ngIf="userForm.get('name').errors?.required">
+              Please enter your name.
+            </span>
+        </span>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="surname">Surname</label>
+        <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Enter your surname"
+               [ngClass]="{'is-invalid': (userForm.get('surname').touched ||
+                                           userForm.get('surname').dirty) &&
+                                           !userForm.get('surname').valid }">
+        <span class="invalid-feedback">
+        <span *ngIf="userForm.get('surname').errors?.required">
+              Please enter your surname.
+            </span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="email" placeholder="Email"
+             [ngClass]="{'is-invalid': (userForm.get('email').touched ||
+                                           userForm.get('email').dirty) &&
+                                           !userForm.get('email').valid }">
+      <span class="invalid-feedback">
+        <span *ngIf="userForm.get('email').errors?.required">
+              Please enter your email.
+            </span>
+        </span>
+
+
+    </div>
+    <div class="form-group">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" formControlName="password" placeholder="Password"
+             [ngClass]="{'is-invalid': (userForm.get('password').touched ||
+                                           userForm.get('password').dirty) &&
+                                           !userForm.get('password').valid }">
+      <span class="invalid-feedback">
+        <span *ngIf="userForm.get('password').errors?.required">
+              Please enter your password.
+            </span>
+        <span *ngIf="userForm.get('password').errors?.minlength">
+              The password should have at least 6 characters
+            </span>
+        </span>
+    </div>
+    <div class="form-row">
+      <app-form-group [cols]="'col-md-6'"
+                      [label]="'Phone Number'"
+                      [labelId]="'phone_number'"
+                      [validationMessage]="'Please Enter your Phone Number'">
+        <input type="number" class="form-control" formControlName="phone_number" id="phone_number"
+               [ngClass]="{'is-invalid': (userForm.get('phone_number').touched ||
+                                           userForm.get('phone_number').dirty) &&
+                                           !userForm.get('phone_number').valid }">
+        <span class="invalid-feedback">
+          <span *ngIf="userForm.get('phone_number').errors?.required">
+            </span>
+        </span>
+      </app-form-group>
+      <!--      <div class="form-group col-md-6">-->
+      <!--        <label for="phone_number">Phone Number</label>-->
+      <!--        <input type="number" class="form-control"  formControlName="phone_number" id="phone_number"-->
+      <!--               [ngClass]="{'is-invalid': (userForm.get('phone_number').touched ||-->
+      <!--                                           userForm.get('phone_number').dirty) &&-->
+      <!--                                           !userForm.get('phone_number').valid }">-->
+      <!--        <span class="invalid-feedback">-->
+      <!--        <span *ngIf="userForm.get('phone_number').errors?.required">-->
+      <!--              Please enter your phone number.-->
+      <!--            </span>-->
+      <!--        </span>-->
+      <!--      </div>-->
+      <div class="form-group col-md-4">
+        <label for="sex">Sex</label>
+        <select id="sex" class="form-control" formControlName="sex"
+                [ngClass]="{'is-invalid': (userForm.get('sex').touched ||
+                                           userForm.get('sex').dirty) &&
+                                           !userForm.get('sex').valid }">
+          <option selected>Male</option>
+          <option>Female</option>
+        </select>
+        <span class="invalid-feedback">
+        <span *ngIf="userForm.get('sex').errors?.required">
+              Please choose one of the following.
+            </span>
+        </span>
+      </div>
+      <div class="form-group col-md-2">
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" min="1000-01-01"
+                 max="3000-12-31" class="form-control" formControlName="dateOfBirth"
+                 [ngClass]="{'is-invalid': (userForm.get('dateOfBirth').touched ||
+                                           userForm.get('dateOfBirth').dirty) &&
+                                           !userForm.get('dateOfBirth').valid }">
+          <span class="invalid-feedback">
+        <span *ngIf="userForm.get('dateOfBirth').errors?.required">
+              Please enter your Date of Birth.
+            </span>
+        </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="driver" id="driver_id"
+               (change)="onDriverChange($event)">
+        <label class="form-check-label" for="driver_id">
+          I want to be Driver.
+        </label>
+      </div>
+    </div>
+      <div *ngIf="userForm.get('driver').value">
+        <div class="form-group col-md-6">
+          <label for="car_model">Car Model</label>
+          <input type="text" class="form-control" id="car_model" formControlName="carType"
+                 placeholder="Enter your car model"
+                 [ngClass]="{'is-invalid': (userForm.get('carType').touched ||
+                                           userForm.get('carType').dirty) &&
+                                           !userForm.get('carType').valid }">
+          <span class="invalid-feedback">
+        <span *ngIf="userForm.get('carType').errors?.required">
+              Please enter your Car Model.
+            </span>
+        </span>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="licence_plate">Licence Plate</label>
+          <input type="text" class="form-control" id="licence_plate" formControlName="registrationPlate"
+                 placeholder="Enter your car model"
+                 [ngClass]="{'is-invalid': (userForm.get('registrationPlate').touched ||
+                                           userForm.get('registrationPlate').dirty) &&
+                                           !userForm.get('registrationPlate').valid }">
+          <span class="invalid-feedback">
+        <span *ngIf="userForm.get('registrationPlate').errors?.required">
+              Please enter your Licence Plate Number.
+            </span>
+        </span>
+        </div>
+      </div>
+    <button class="btn btn-primary mr-3"
+            type="submit"
+            style="width:80px"
+            [title]="userForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            [disabled]="!userForm.valid">
+      Register
+    </button>
+  </form>
+
+</div>
