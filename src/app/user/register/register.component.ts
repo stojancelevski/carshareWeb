@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { HomeService } from '../../home/home.service';
 
 @Component({
   selector: 'app-register',
@@ -9,15 +10,15 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent implements OnInit {
   userForm: FormGroup;
-  driverForm: FormGroup;
 
   constructor(private fb: FormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {
     this.userForm = this.fb.group({
+      id: 4,
       name: ['', [Validators.required, Validators.minLength(3)]],
-      surname: ['', [Validators.required,]],
+      surname: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
       phone_number: ['', [Validators.required]],
@@ -44,8 +45,13 @@ export class RegisterComponent implements OnInit {
   }
 
   save() {
-    console.log(this.userForm);
-    console.log(this.driverForm);
+    this.userService.createUser(this.userForm.value).subscribe(data => {
+      console.log(data);
+       },
+      err =>
+        console.log(err),
+    )
+    ;
 
   }
 

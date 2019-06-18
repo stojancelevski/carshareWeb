@@ -17,4 +17,10 @@ export class UserService {
     user.id = null;
     return this.http.post<User>(this.userUrl, user, {headers: headers});
   }
+
+  loginUser(email: string, password: string) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<any>(this.userUrl, {email, password}, {headers: headers});
+
+  }
 }

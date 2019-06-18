@@ -1,14 +1,12 @@
 <div class="form-group {{cols}}">
-  <label for="{{labelId}}">{{label}}</label>
-<!--  <input type="number" class="form-control"  formControlName="phone_number" id="phone_number"-->
-<!--         [ngClass]="{'is-invalid': (userForm.get('phone_number').touched ||-->
-<!--                                           userForm.get('phone_number').dirty) &&-->
-<!--                                           !userForm.get('phone_number').valid }">-->
+  <label for="{{formControlName}}">{{label}}</label>
+  <input type="{{type}}" class="form-control" formControlName="{{formControlName}}" id="{{formControlName}}"
+  >
   <ng-content></ng-content>
-<!--<span class="invalid-feedback">-->
-<!--          <span *ngIf="userForm.get('{{labelId}}').errors?.required">-->
-<!--              {{validationMessage}}-->
-<!--            </span>-->
-<!--        </span>-->
+  <!--  <span class="invalid-feedback">-->
+  <!--            <span *ngIf="userForm.get('{{labelId}}').errors?.required">-->
+  <!--                {{validationMessage}}-->
+  <!--              </span>-->
+  <!--          </span>-->
 </div>
 

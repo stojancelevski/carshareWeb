@@ -57,31 +57,31 @@
         </span>
     </div>
     <div class="form-row">
-      <app-form-group [cols]="'col-md-6'"
-                      [label]="'Phone Number'"
-                      [labelId]="'phone_number'"
-                      [validationMessage]="'Please Enter your Phone Number'">
-        <input type="number" class="form-control" formControlName="phone_number" id="phone_number"
-               [ngClass]="{'is-invalid': (userForm.get('phone_number').touched ||
-                                           userForm.get('phone_number').dirty) &&
-                                           !userForm.get('phone_number').valid }">
-        <span class="invalid-feedback">
-          <span *ngIf="userForm.get('phone_number').errors?.required">
-            </span>
-        </span>
-      </app-form-group>
-      <!--      <div class="form-group col-md-6">-->
-      <!--        <label for="phone_number">Phone Number</label>-->
-      <!--        <input type="number" class="form-control"  formControlName="phone_number" id="phone_number"-->
-      <!--               [ngClass]="{'is-invalid': (userForm.get('phone_number').touched ||-->
-      <!--                                           userForm.get('phone_number').dirty) &&-->
-      <!--                                           !userForm.get('phone_number').valid }">-->
+      <!--      <app-form-group [cols]="'col-md-6'"-->
+      <!--                      [label]="'Phone Number'"-->
+      <!--                      [validationMessage]="'Please Enter your Phone Number'"-->
+      <!--                      [(ngModel)]="phoneNumber"-->
+      <!--                      [formControlName]="'userForm'"-->
+      <!--      >-->
       <!--        <span class="invalid-feedback">-->
-      <!--        <span *ngIf="userForm.get('phone_number').errors?.required">-->
-      <!--              Please enter your phone number.-->
+      <!--          <span *ngIf="userForm.get('phoneNumber').errors?.required">-->
       <!--            </span>-->
       <!--        </span>-->
-      <!--      </div>-->
+      <!--      </app-form-group>-->
+
+      <div class="form-group col-md-6">
+        <label for="phone_number">Phone Number</label>
+        <input type="number" class="form-control" formControlName="phone_number" id="phone_number"
+               placeholder="Enter your Phone Number"
+               [ngClass]="{'is-invalid': (userForm.get('phone_number').touched ||
+                                                 userForm.get('phone_number').dirty) &&
+                                                 !userForm.get('phone_number').valid }">
+        <span class="invalid-feedback">
+              <span *ngIf="userForm.get('phone_number').errors?.required">
+                    Please enter your phone number.
+                  </span>
+              </span>
+      </div>
       <div class="form-group col-md-4">
         <label for="sex">Sex</label>
         <select id="sex" class="form-control" formControlName="sex"
@@ -122,34 +122,34 @@
         </label>
       </div>
     </div>
-      <div *ngIf="userForm.get('driver').value">
-        <div class="form-group col-md-6">
-          <label for="car_model">Car Model</label>
-          <input type="text" class="form-control" id="car_model" formControlName="carType"
-                 placeholder="Enter your car model"
-                 [ngClass]="{'is-invalid': (userForm.get('carType').touched ||
+    <div *ngIf="userForm.get('driver').value">
+      <div class="form-group col-md-6">
+        <label for="car_model">Car Model</label>
+        <input type="text" class="form-control" id="car_model" formControlName="carType"
+               placeholder="Enter your car model"
+               [ngClass]="{'is-invalid': (userForm.get('carType').touched ||
                                            userForm.get('carType').dirty) &&
                                            !userForm.get('carType').valid }">
-          <span class="invalid-feedback">
+        <span class="invalid-feedback">
         <span *ngIf="userForm.get('carType').errors?.required">
               Please enter your Car Model.
             </span>
         </span>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="licence_plate">Licence Plate</label>
-          <input type="text" class="form-control" id="licence_plate" formControlName="registrationPlate"
-                 placeholder="Enter your car model"
-                 [ngClass]="{'is-invalid': (userForm.get('registrationPlate').touched ||
+      </div>
+      <div class="form-group col-md-6">
+        <label for="licence_plate">Licence Plate</label>
+        <input type="text" class="form-control" id="licence_plate" formControlName="registrationPlate"
+               placeholder="Enter your car model"
+               [ngClass]="{'is-invalid': (userForm.get('registrationPlate').touched ||
                                            userForm.get('registrationPlate').dirty) &&
                                            !userForm.get('registrationPlate').valid }">
-          <span class="invalid-feedback">
+        <span class="invalid-feedback">
         <span *ngIf="userForm.get('registrationPlate').errors?.required">
               Please enter your Licence Plate Number.
             </span>
         </span>
-        </div>
       </div>
+    </div>
     <button class="btn btn-primary mr-3"
             type="submit"
             style="width:80px"
